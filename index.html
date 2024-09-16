@@ -70,18 +70,17 @@ Pythonmonkey was built by <a href="https://www.linkedin.com/posts/will-pringle_j
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UmlSryXsh30?si=bGj9QgxCOdUolhYl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </ul>
     </section>
+
+  <span class='no-show'>
+    PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.
+    This deep integration of JavaScript and Python is achieved by embedding a <a href="https://spidermonkey.dev/">SpiderMonkey</a>
+    runtime in the Python VM. PythonMonkey makes it possible to share data, functions, events, etc, across runtimes. Data sharing
+    respects host language idioms and shares memory between runtimes whenever possible.
+  </span>
 </body>
-    </style>
-  </head>
-  <body>
-    <span class='no-show'>
-      PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.
-      This deep integration of JavaScript and Python is achieved by embedding a <a href="https://spidermonkey.dev/">SpiderMonkey</a>
-      runtime in the Python VM. PythonMonkey makes it possible to share data, functions, events, etc, across runtimes. Data sharing
-      respects host language idioms and shares memory between runtimes whenever possible.
-    </span>
-  </body>
-  <script>
+
+<!-- Google Analytics Stuff -->
+<script>
 'use strict';
 
 const gtagHTML = `
@@ -116,7 +115,6 @@ function setTracking(allow)
       gaScript.onerror = console.error;
       document.body.appendChild(gaScript);
     }
-    document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
   }, 30);
 }
 
