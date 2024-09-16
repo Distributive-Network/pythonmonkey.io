@@ -71,5 +71,69 @@ Pythonmonkey was built by <a href="https://www.linkedin.com/posts/will-pringle_j
         </ul>
     </section>
 </body>
-</html>
+    </style>
+  </head>
+  <body>
+    <span class='no-show'>
+      PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.
+      This deep integration of JavaScript and Python is achieved by embedding a <a href="https://spidermonkey.dev/">SpiderMonkey</a>
+      runtime in the Python VM. PythonMonkey makes it possible to share data, functions, events, etc, across runtimes. Data sharing
+      respects host language idioms and shares memory between runtimes whenever possible.
+    </span>
+  </body>
+  <script>
+'use strict';
+
+const gtagHTML = `
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR"></sc${''}ript>
+<script>
+</sc${''}ript>
+`;
+
+function setTracking(allow)
+{
+  document.body.setAttribute('gdpr-query', 'complete');
+  window.localStorage.setItem('gdpr-query', JSON.stringify(allow));
+
+  window.setTimeout(() => {
+    console.log('allow-tracking=', allow);
+    if (allow)
+    {
+      const gaScript = document.createElement('SCRIPT');
+      gaScript.setAttribute('type', 'text/javascript');
+      gaScript.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR');
+      gaScript.onload = function gaScript$onload() {
+        console.debug('loaded google analytics');
+        window.dataLayer = window.dataLayer || [];
+        function gtag()
+        {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-F6ZF7J18CR');
+      };
+      gaScript.onerror = console.error;
+      document.body.appendChild(gaScript);
+    }
+    document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
+  }, 30);
+}
+
+if (window.localStorage.getItem('gdpr-query'))
+{
+  const trackingAllowed = JSON.parse(window.localStorage.getItem('gdpr-query'));
+  if (trackingAllowed)
+    setTracking(true);
+}
+  </script>
+  <div id="gdpr-blocker">
+    <div id="gdpr-dialog">
+      <p>This site uses cookies to track unique visitors via Google Analytics. <a href="https://distributve.network">Distributive</a> does not and will not share this data with anyone.</p>
+      <button onclick='setTracking(false)'>Do Not Track</button>
+      <button onclick='setTracking(true)' class='default-action'>Allow Cookies</button>
+    </div>
+  </div>
+
+  </html>
 
