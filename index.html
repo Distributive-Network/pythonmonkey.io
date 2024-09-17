@@ -17,8 +17,25 @@
     <meta name="twitter:title" content="PythonMonkey - JavaScript meets Python">
     <meta name="twitter:description" content="PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.">
     <meta name="twitter:image" content="https://pythonmonkey.io/images/pythonmonkey-site-preview.png">
+    <style type="text/css">
+A.no-show, SPAN.no-show
+{
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+    </style>
 </head>
 <body>
+    <span class='no-show'>
+      PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.
+      This deep integration of JavaScript and Python is achieved by embedding a <a href="https://spidermonkey.dev/">SpiderMonkey</a>
+      runtime in the Python VM. PythonMonkey makes it possible to share data, functions, events, etc, across runtimes. Data sharing 
+      respects host language idioms and shares memory between runtimes whenever possible.
+    </span>
+    <a class='no-show' href="https://github.com/Distributive-Network/PythonMonkey#pythonmonkey">Source Code</a>
+    <a class='no-show' href="https://pypi.org/project/pythonmonkey/">PyPI PIP package</a>
     <div class="maincontent">
         <header>
             <div class="logo">
@@ -121,7 +138,20 @@ function setTracking(allow)
     document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
   }, 30);
 }
+if (window.localStorage.getItem('gdpr-query'))
+{
+  const trackingAllowed = JSON.parse(window.localStorage.getItem('gdpr-query'));
+  if (trackingAllowed)
+    setTracking(true);
+}
   </script>
+  <div id="gdpr-blocker">
+    <div id="gdpr-dialog">
+      <p>This site uses cookies to track unique visitors via Google Analytics. <a href="https://distributve.network">Distributive</a> does not and will not share this data with anyone.</p>
+      <button onclick='setTracking(false)'>Do Not Track</button>
+      <button onclick='setTracking(true)' class='default-action'>Allow Cookies</button>
+    </div>
+  </div>
 </body>
 </html>
 
