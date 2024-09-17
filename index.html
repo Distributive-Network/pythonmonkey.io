@@ -18,11 +18,6 @@
     <meta name="twitter:description" content="PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.">
     <meta name="twitter:image" content="https://pythonmonkey.io/images/pythonmonkey-site-preview.png">
     <style type="text/css">
-BODY[gdpr-query=complete]
-{
-  cursor: pointer;
-}
-
 #gdpr-dialog A
 {
   color: #c4c5c6;
@@ -40,6 +35,8 @@ A.no-show, SPAN.no-show
   position: fixed;
   top: 0;
   left: 0;
+  height: 0;
+  width: 0;
 }
 DIV#gdpr-blocker
 {
@@ -144,7 +141,7 @@ DIV#gdpr-dialog BUTTON:active
     <div class="maincontent">
         <header>
             <div class="logo">
-                <img src="./PythonMonkeyText.png" alt="PythonMonkey Logo">
+                <a href="https://pypi.org/project/pythonmonkey/"><img src="./PythonMonkeyText.png" alt="PythonMonkey Logo"></a>
             </div>
             <nav>
                 <ul>
@@ -159,7 +156,7 @@ DIV#gdpr-dialog BUTTON:active
 
         <main>
             <div class="central-logo">
-                <img src="./pythonmonkey-icon.png" alt="PythonMonkey Logo">
+                <a href="https://pypi.org/project/pythonmonkey/"><img src="./pythonmonkey-icon.png" alt="PythonMonkey Logo"></a>
                 <h1>
                     Seamless interop between<br>
                     Python and JavaScript.
@@ -185,7 +182,7 @@ DIV#gdpr-dialog BUTTON:active
     <section id="about">
         <h2>About PythonMonkey</h2>
         <p>
-PythonMonkey is an embedding of <a href="https://spidermonkey.dev/">Mozilla's SpiderMonkey JavaScript/WebAssembly</a> Engine in Python with high level bindings. It enables Python developers to leverage the JavaScript ecosystem through Python with ease and virtually no performance loss.
+PythonMonkey embeds of <a href="https://spidermonkey.dev/">Mozilla's SpiderMonkey JavaScript/WebAssembly</a> Engine in Python with high level bindings. It enables Python developers to leverage the JavaScript ecosystem through Python with ease and excellent CPU/memory performance.
         </p>
         <br>
         <p>
@@ -240,7 +237,6 @@ function setTracking(allow)
       gaScript.onerror = console.error;
       document.body.appendChild(gaScript);
     }
-    document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
   }, 30);
 }
 
