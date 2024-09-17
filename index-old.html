@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+  <head>
+    <title>PythonMonkey - JavaScript meets Python</title>
+    <meta charset="utf-8">
+    <meta name="description" content="PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="PythonMonkey - JavaScript meets Python">
+    <meta property="og:description" content="PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.">
+    <meta property="og:image" content="https://pythonmonkey.io/images/pythonmonkey-site-preview.png">
+    <meta property="og:url" content="https://pythonmonkey.io/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PythonMonkey - JavaScript meets Python">
+    <meta name="twitter:description" content="PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.">
+    <meta name="twitter:image" content="https://pythonmonkey.io/images/pythonmonkey-site-preview.png">
+
+    <style>
+HTML
+{
+  width: 100%;
+  height: 100%;
+}
+
+BODY
+{
+  position: static;
+  background-color: #1a1d21;
+  background-image: url(./pythonmonkey-full-reverse.png);
+  background-size: 80% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  font-family: arial, helvetica, sans-serif;
+  color: #c4c5c6;
+  line-height: 1.5em;
+}
+
+BODY[gdpr-query=complete]
+{
+  cursor: pointer;
+}
+
+A
+{
+  color: #c4c5c6;
+  text-decoration: none;
+}
+
+A:hover
+{
+  text-decoration: underline;
+}
+
+A.no-show, SPAN.no-show
+{
+  opacity: 0;
+}
+
+DIV#gdpr-blocker
+{
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  transition: all 450ms ease-out;
+}
+
+BODY[gdpr-query=complete] DIV#gdpr-blocker
+{
+  opacity: 0;
+  pointer-events: none;
+}
+
+DIV#gdpr-dialog
+{
+  position: fixed;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  border: 1px solid #666;
+  background-color: #1a1d21;
+  padding: 1em;
+  width: 80%;
+  max-width: 30em;
+  transition: all 150ms ease-in;
+  opacity: 0.9;
+  box-shadow: 0px 0px 100px black;
+}
+
+BODY[gdpr-query=complete] DIV#gdpr-dialog,
+BODY[gdpr-query=complete] DIV#gdpr-dialog BUTTON
+{
+  opacity: 0;
+  font-size: 0;
+  border: 0;
+  padding: 0;
+  color: #000;
+}
+
+DIV#gdpr-dialog P
+{
+  text-align: left;
+}
+
+BUTTON
+{
+  background-color: #102338;
+  color: #c4c5c6;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+BUTTON:hover
+{
+  border: 1px solid #102338;
+}
+
+BUTTON.default-action
+{
+  background-color: #fecd45;
+  color: #102338;
+}
+
+BUTTON.default-action:hover
+{
+  border: 1px solid #fecd45;
+}
+
+BUTTON:active
+{
+  position: relative;
+  top: 1px;
+  left: 1px;
+  filter: brightness(0.9);
+}
+    </style>
+  </head>
+  <body>
+    <span class='no-show'>
+      PythonMonkey allows Python developers to use complex JavaScript libraries without awkward syntax or performance penalties.
+      This deep integration of JavaScript and Python is achieved by embedding a <a href="https://spidermonkey.dev/">SpiderMonkey</a>
+      runtime in the Python VM. PythonMonkey makes it possible to share data, functions, events, etc, across runtimes. Data sharing 
+      respects host language idioms and shares memory between runtimes whenever possible.
+    </span>
+    <a class='no-show' href="https://github.com/Distributive-Network/PythonMonkey#pythonmonkey">Source Code</a>
+    <a class='no-show' href="https://pypi.org/project/pythonmonkey/">PyPI PIP package</a>
+  </body>
+  <script>
+'use strict';
+
+const gtagHTML = `
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR"></sc${''}ript>
+<script>
+</sc${''}ript>
+`;
+
+function setTracking(allow)
+{
+  document.body.setAttribute('gdpr-query', 'complete');
+  window.localStorage.setItem('gdpr-query', JSON.stringify(allow));
+
+  window.setTimeout(() => {
+    console.log('allow-tracking=', allow);
+    if (allow)
+    {
+      const gaScript = document.createElement('SCRIPT');
+      gaScript.setAttribute('type', 'text/javascript');
+      gaScript.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR');
+      gaScript.onload = function gaScript$onload() {
+        console.debug('loaded google analytics');
+        window.dataLayer = window.dataLayer || [];
+        function gtag()
+        {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-F6ZF7J18CR');
+      };
+      gaScript.onerror = console.error;
+      document.body.appendChild(gaScript);
+    }
+    document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
+  }, 30);
+}
+
+if (window.localStorage.getItem('gdpr-query'))
+{
+  const trackingAllowed = JSON.parse(window.localStorage.getItem('gdpr-query'));
+  if (trackingAllowed)
+    setTracking(true);
+}
+  </script>
+  <div id="gdpr-blocker">
+    <div id="gdpr-dialog">
+      <p>This site uses cookies to track unique visitors via Google Analytics. <a href="https://distributve.network">Distributive</a> does not and will not share this data with anyone.</p>
+      <button onclick='setTracking(false)'>Do Not Track</button>
+      <button onclick='setTracking(true)' class='default-action'>Allow Cookies</button>
+    </div>
+  </div>
+</html>
