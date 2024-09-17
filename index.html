@@ -83,6 +83,45 @@ Pythonmonkey was built by <a href="https://www.linkedin.com/posts/will-pringle_j
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UmlSryXsh30?si=bGj9QgxCOdUolhYl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </ul>
     </section>
+  <script>
+'use strict';
+
+const gtagHTML = `
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR"></sc${''}ript>
+<script>
+</sc${''}ript>
+`;
+
+function setTracking(allow)
+{
+  document.body.setAttribute('gdpr-query', 'complete');
+  window.localStorage.setItem('gdpr-query', JSON.stringify(allow));
+
+  window.setTimeout(() => {
+    console.log('allow-tracking=', allow);
+    if (allow)
+    {
+      const gaScript = document.createElement('SCRIPT');
+      gaScript.setAttribute('type', 'text/javascript');
+      gaScript.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-F6ZF7J18CR');
+      gaScript.onload = function gaScript$onload() {
+        console.debug('loaded google analytics');
+        window.dataLayer = window.dataLayer || [];
+        function gtag()
+        {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-F6ZF7J18CR');
+      };
+      gaScript.onerror = console.error;
+      document.body.appendChild(gaScript);
+    }
+    document.body.onclick = () => { window.location.href = document.querySelector('A.no-show').getAttribute('href') };
+  }, 30);
+}
+  </script>
 </body>
 </html>
 
